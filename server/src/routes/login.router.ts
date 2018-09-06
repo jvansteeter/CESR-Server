@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import * as passport from 'passport';
+import { Users } from '../config/users';
 
 
 /**********************************************************************************************************
@@ -16,9 +16,14 @@ export class LoginRouter {
 	}
 
 	init() {
-		this.router.post('/login', passport.authenticate('local'), async (req: Request, res: Response) => {
+		this.router.post('/login', async (req: Request, res: Response) => {
 			try {
-				res.send('OK')
+				if (Users[req.body.username] === req.body.password) {
+					res.send('OK')
+				}
+				else {
+					res.status(401).send();
+				}
 			}
 			catch (error) {
 				res.status(500).send(error);

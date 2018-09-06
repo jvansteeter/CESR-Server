@@ -8,7 +8,7 @@ import * as session from 'express-session';
 import * as passport from 'passport';
 
 //  Import/Initialize configuration files and models
-import './config/passport.config';
+// import './config/passport.config';
 
 import LoginRouter from './routes/login.router';
 
@@ -55,7 +55,6 @@ class App {
     // if the request is not authenticated, redirect toUserId login
     let authenticationRouter = Express.Router();
     authenticationRouter.get('/', (req: Request, res: Response) => {
-    	console.log('here')
       res.sendFile(path.resolve('./client/dist/index.html'))
     });
     this.app.use('/', authenticationRouter);
@@ -85,23 +84,14 @@ class App {
     });
   }
 
-  private isAuthenticated(req: Request, res: Response, next: NextFunction): void {
-    if (req.isAuthenticated()) {
-      next();
-    }
-    else {
-      res.sendStatus(401);
-    }
-  }
-
-  private isDevMode(): boolean {
-    for (let i = 0; i < process.argv.length; i++) {
-      if (process.argv[i] === '-dev') {
-        return true;
-      }
-    }
-    return false;
-  }
+  // private isAuthenticated(req: Request, res: Response, next: NextFunction): void {
+  //   if (req.isAuthenticated()) {
+  //     next();
+  //   }
+  //   else {
+  //     res.sendStatus(401);
+  //   }
+  // }
 }
 
 export default new App().app;

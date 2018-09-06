@@ -14,11 +14,14 @@
 	-webkit-font-smoothing: antialiased;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
+html {
+	height: 100%;
+	display: flex;
+}
+body {
+	height: 100%;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+	flex: 1;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
